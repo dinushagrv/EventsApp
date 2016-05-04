@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Soho';
+    src: url('/EventsApp/fonts/SOHOGOTHICPRO-REGULAR.ttf');
+}
+
+*{
+	font-family:'Soho';
+	}
+
+.row {
+    margin-right: -15px;
+    margin-left: 0px !important;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ccc !important;
+}
+
+.event_text{
+	margin-left:5px;
+	color: #8C8C8C;
+	line-height: normal;
+	}
+.event_disc{
+	margin-top:10px;
+	padding-top:10px;
+	font-size: 11pt;
+    line-height: normal;
+	}
+.event_bg{
+	    background-color: #F3F3F3;
+	}
+	
+.events_list{
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 10px 25px 15px;
+    overflow: hidden;
+    border-left-width: 3px;
+    border-left-style: solid;
+    min-height: 63px;
+    border-bottom: none;
+	border-color: #206177;
+	margin-bottom:10px;
+	border-radius:10px;
+}
+.event_d_date{
+	padding-left:0px;
+	}
+.event_d_title{
+	    font-weight: 600;
+		
+	}
+.login{
+	margin-right::10px;
+	}
