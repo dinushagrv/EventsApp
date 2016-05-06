@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Bootstrap - Prebuilt Layout</title>
+<title>GRV-Event Booking</title>
 <!-- InstanceEndEditable -->
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -25,18 +25,17 @@
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="/EventsApp">Event Booking</a></div>
+      <a class="navbar-brand" href="/EventsApp">Event Booking</a>
+
+      </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="login"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Login</a></li>
+      	<li><a href="newEvent.php">New Event</a></li>
+        <li><a href="#" class="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -45,44 +44,98 @@
 </nav>
 <div class="container">
 <div class="row"><!-- InstanceBeginEditable name="Content" -->
+<?php
+require_once('includes/db.php');
+
+
+if($_GET){
+	
+	if($_GET['eid']>=0){
+	$event_id = $_GET['eid'];
+	
+	$mydata = getEvent($event_id);
+	//echo var_dump($mydata);
+	//$data_array = $mydata->fetchAll();
+	 //echo strval($mydata);
+	//$mydata[0][];
+	}}
+
+
+?>
+
   <div class="events_list event_bg">
     <div class="row">
       <div class="col-lg-1 col-xs-12">
-      	<div class="h1 event_d_date">12<br>
-	      <span class="h3">MAR</span></div>
+      	<div class="h1 event_d_date"><?php echo $mydata[0]['day'];?><br>
+	      <span class="h3"><?php echo $mydata[0]['month'];?></span></div>
         </div>
-      <div class="col-lg-10 col-xs-12"><div class="h2">Dinner at The Meadows</div>
+      <div class="col-lg-8 col-xs-12"><div class="h2"><?php echo $mydata[0]['name'];?></div>
       
       </div>
+      <div class="col-lg-3 col-xs-12"><h2>
+      
+      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >Book</button> 
+	<button type="button" class="btn btn-danger btn-lg">Decline</button></h2></div>
     </div>
     <hr>
-    <div class="row"><h4 class="event_d_title">EVENT DETAILS</h4><p> for New div Tag Goes Here</p></div>
+    <div class="row"><h4 class="event_d_title">EVENT DETAILS</h4><p><?php echo $mydata[0]['discription'];?></p></div>
     <hr>
     <div class="row">
-      <div class="col-lg-6"><h4 class="event_d_title "><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_d_title">TIME</span></h4>9.00 pm</div>
-      <div class="col-lg-6"><h4 class="event_d_title"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_d_title">LOCATION</span></h4>The Meadows 80 Northcorp Bvd Broadmeadows</div>
+      <div class="col-lg-6"><h4 class="event_d_title "><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_d_title">TIME</span></h4><?php echo $mydata[0]['time'];?></div>
+      <div class="col-lg-6"><h4 class="event_d_title"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_d_title">LOCATION</span></h4><?php echo $mydata[0]['address'];?></div>
     </div>
     <hr>
-    <div class="row">Content for New div Tag Goes Here</div>
+    <div class="row"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12512.601545260133!2d142.47393169861775!3d-38.36864235091998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x4c57e84f3ad3794a!2sGRV!5e0!3m2!1sen!2sau!4v1462426863873" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+    <hr>
     <div class="row">
-      <div class="col-lg-6">Content for New div Tag Goes Here</div>
-      <div class="col-lg-6">Content for New div Tag Goes Here</div>
-      Content for New div Tag Goes Here</div>
+      <div class="col-lg-6"><h4 class="event_d_title"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Attending</h4>
+      <ul>
+      	<li>Alan Clayton</li>
+        <li>Andrew Gibson</li>
+      </ul>
+      
+      </div>
+      <div class="col-lg-6"><h4 class="event_d_title"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Declined</h4>
+      <ul>
+      	<li>John Doe</li>
+        <li>Jane Doe</li>
+      </ul>
+      
+      </div>
+      </div>
 <br>
-    <div>Content for New div Tag Goes Here</div>
+    <div class=""></div>
   </div>
 <!-- InstanceEndEditable --></div>
-<hr>
+<!-- <hr> -->
 <div class="row">
     
     <div class="text-center col-md-6 col-md-offset-3">
     
-      <h4><img src="images/grv_logo.png" width="157" height="58" alt=""/></h4>
-      <p>Copyright &copy; 2016 &middot; GRV Information Management & Technology Dept.</p>
+      <h4>
+      <img src="images/grv_logo.png" width="157" height="58" alt=""/></h4>
+      <p style="color: #c2c2c2;">Copyright &copy; 2016 &middot; GRV Information Management & Technology Dept.</p>
     </div>
   </div>
-  <hr>
+  <!--<hr> -->
 </div>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form action="includes/db.php" method="post">
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
 <script src="../js/jquery-1.11.3.min.js"></script>

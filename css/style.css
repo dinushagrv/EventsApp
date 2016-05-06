@@ -1,3 +1,5 @@
+@import url(login_modal.css);
+
 @font-face {
     font-family: 'Soho';
     src: url('/EventsApp/fonts/SOHOGOTHICPRO-REGULAR.ttf');
@@ -20,7 +22,7 @@ hr {
 }
 
 .event_text{
-	margin-left:5px;
+	/*margin-left:5px;*/
 	color: #8C8C8C;
 	line-height: normal;
 	}
@@ -56,5 +58,31 @@ hr {
 		
 	}
 .login{
-	margin-right::10px;
+
 	}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    margin-right: 5px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.events_list:hover{
+	background:#ECEDED;
+	    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+	border-left-width: 7px;
+	}
+	.event_cancel{
+		    color: #ffffff;
+    background: repeating-linear-gradient(45deg,#FDF2F2,#FDF2F2 10px,#FAFAFA 10px,#FAFAFA 20px);
+		
+		}

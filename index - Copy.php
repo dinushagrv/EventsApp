@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>GRV-Event Booking</title>
+<title>Bootstrap - Prebuilt Layout</title>
 <!-- InstanceEndEditable -->
 <!-- Bootstrap -->
 <link href="css/bootstrap.css" rel="stylesheet">
@@ -50,33 +50,63 @@ require_once('includes/db.php');
 $mydata = getEvents();
 
 foreach($mydata as $data){
-	
 	echo '
 	<div class="col-lg-12 col-xs-12 event_bg events_list">
-	  <div class="col-lg-1 col-xs-12"> <div class="h1">'.$data['day'].'<br><span class="h3">'.$data['month'].'</span></div>
+	  <div class="col-lg-1 col-xs-12"> <div class="h1">12<br><span class="h3">MAR</span></div>
       </div>
 	  <div class="col-lg-7 col-xs-12">
-	  <div class="h2">'.$data["name"]
-	  	.'</div><div class="h4">
-			<p><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_text">'.$data['time']
-			.'</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_text">'.$data['address'];
-	echo '</span></p><p class="event_disc">'.substr($data['discription'],0,120).' ...';
+	  <div class="h2"><';
+	$data['name']; 
 	
-	echo '</p><a href="event_details.php?eid='.$data['id'].'&&do=ed">Event Details</a> <br><br><div id="msg" class="alert-success hide" ></div></div> </div>';
-	
-	//if(hasResponded($data["id"], )){
-	echo '
-		
-	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >Book</button> 
-	<button type="button" class="btn btn-danger btn-lg">Decline</button><br><p> (2) attending </p></div>
-	
-	
-	';
+	echo '</div>';		
 		
 }
 
 
 ?>
+
+
+	<div class="col-lg-12 col-xs-12 event_bg events_list">
+	  <div class="col-lg-1 col-xs-12"> <div class="h1">12<br><span class="h3">MAR</span></div>
+      </div>
+	  <div class="col-lg-7 col-xs-12">
+	    <div class="h2">Dinner at The Meadows</div>
+	    <div class="h4">
+<p><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_text">9.00 pm</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_text">Content for New div Tag Goes Here</span></p>
+<p class="event_disc"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in lacus id sem
+posuere sodales. Morbi dapibus sem quam, ut congue nisl lacinia ac. </p>
+<a href="event_details.php">More</a>
+</div>
+
+
+</div>
+<div class="col-lg-4 col-xs-12">
+<button id="book" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >Book</button> 
+<button type="button" class="btn btn-danger btn-lg">Decline</button>
+
+
+
+</div>
+	</div>
+	<div class="col-lg-12 col-xs-12 event_bg events_list">
+	  <div class="col-lg-1 col-xs-12">
+	    <div class="h1">12<br>
+	      <span class="h3">MAR</span></div>
+      </div>
+	  <div class="col-lg-7 col-xs-12">
+	    <div class="h2">Dinner at The Meadows</div>
+	    <div class="h4">
+	      <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_text">8.00 pm</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_text">The Meadows 80 Northcorp Bvd Broadmeadows</span></p>
+	      <p class="event_disc"> Content for New div Tag Goes Here </p><a href="event_details.php">More</a>
+        </div>
+      </div>
+	  <div class="col-lg-4 col-xs-12">
+	    
+		<button type="button" class="btn btn-warning btn-lg">Remove Booking (2)</button>
+      </div>
+    </div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -102,8 +132,8 @@ foreach($mydata as $data){
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="book" type="button" class="btn btn-success" onClick="bookEvent()" data-dismiss="modal" >Book</button>
+        <button  id="book" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Book</button>
       </div>
     </div>
   </div>
@@ -111,42 +141,17 @@ foreach($mydata as $data){
 <script src="js/jquery-1.9.1.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('#books').click(function(){
+        $('#book').click(function(){
             $.ajax({
                 url:'includes/db.php',
 				data:{"do":"new_user"},
 				type:'GET',
                 success: function(Response){
-                  $('#myModal').modal({
-    				show: 'false'
-					});  
+                    
                 }
             });
-			
-		
         });
     });
-	
-	function bookEvent(){
-		
-		$('#msg').html("Booking Successful !");
-		$('#msg').addClass("show");
-		$('#msg').removeClass("hide");
-		
-		$('#myModal').modal({
-    				show: 'false'
-					});  
-		$.ajax({
-                url:'includes/db.php',
-				data:{"do":"new_user"},
-				type:'GET',
-                success: function(Response){
-                  //$('#myModal').modal({
-//    				show: 'false'
-//					});  
-                }
-            });
-		}
     </script>
 <!-- InstanceEndEditable --></div>
 <!-- <hr> -->

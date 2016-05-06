@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- TemplateBeginEditable name="doctitle" -->
-<title>Bootstrap - Prebuilt Layout</title>
+<title>GRV-Event Booking</title>
 <!-- TemplateEndEditable -->
 <!-- Bootstrap -->
 <link href="../css/bootstrap.css" rel="stylesheet">
@@ -25,18 +25,17 @@
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="/EventsApp">Event Booking</a></div>
+      <a class="navbar-brand" href="/EventsApp">Event Booking</a>
+
+      </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="login"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Login</a></li>
+      	<li><a href="../newEvent.php">New Event</a></li>
+        <li><a href="#" class="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Login</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -45,17 +44,35 @@
 </nav>
 <div class="container">
 <div class="row"><!-- TemplateBeginEditable name="Content" -->Content<!-- TemplateEndEditable --></div>
-<hr>
+<!-- <hr> -->
 <div class="row">
     
     <div class="text-center col-md-6 col-md-offset-3">
     
-      <h4><img src="../images/grv_logo.png" width="157" height="58" alt=""/></h4>
-      <p>Copyright &copy; 2016 &middot; GRV Information Management & Technology Dept.</p>
+      <h4>
+      <img src="../images/grv_logo.png" width="157" height="58" alt=""/></h4>
+      <p style="color: #c2c2c2;">Copyright &copy; 2016 &middot; GRV Information Management & Technology Dept.</p>
     </div>
   </div>
-  <hr>
+  <!--<hr> -->
 </div>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form action="../includes/db.php" method="post">
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
 <script src="../js/jquery-1.9.1.min.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
 <script src="../js/jquery-1.11.3.min.js"></script>

@@ -45,109 +45,23 @@
 <div class="container">
 <div class="row"><!-- InstanceBeginEditable name="Content" -->
 
-<?php 
-require_once('includes/db.php');
-$mydata = getEvents();
+<div class=" " id="login-modal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" >
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login to Your Account</h1><br>
+				  <form action="includes/db.php" method="post">
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<input type="submit" name="login" class="login loginmodal-submit" value="Login">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
 
-foreach($mydata as $data){
-	
-	echo '
-	<div class="col-lg-12 col-xs-12 event_bg events_list">
-	  <div class="col-lg-1 col-xs-12"> <div class="h1">'.$data['day'].'<br><span class="h3">'.$data['month'].'</span></div>
-      </div>
-	  <div class="col-lg-7 col-xs-12">
-	  <div class="h2">'.$data["name"]
-	  	.'</div><div class="h4">
-			<p><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_text">'.$data['time']
-			.'</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_text">'.$data['address'];
-	echo '</span></p><p class="event_disc">'.substr($data['discription'],0,120).' ...';
-	
-	echo '</p><a href="event_details.php?eid='.$data['id'].'&&do=ed">Event Details</a> <br><br><div id="msg" class="alert-success hide" ></div></div> </div>';
-	
-	//if(hasResponded($data["id"], )){
-	echo '
-		
-	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >Book</button> 
-	<button type="button" class="btn btn-danger btn-lg">Decline</button><br><p> (2) attending </p></div>
-	
-	
-	';
-		
-}
-
-
-?>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">EVENT CONFIRMATION</h4>
-      </div>
-      <div class="modal-body">
-        
-         <form>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">No of attendies:</label>
-            <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
-          </div>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="book" type="button" class="btn btn-success" onClick="bookEvent()" data-dismiss="modal" >Book</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('#books').click(function(){
-            $.ajax({
-                url:'includes/db.php',
-				data:{"do":"new_user"},
-				type:'GET',
-                success: function(Response){
-                  $('#myModal').modal({
-    				show: 'false'
-					});  
-                }
-            });
-			
-		
-        });
-    });
-	
-	function bookEvent(){
-		
-		$('#msg').html("Booking Successful !");
-		$('#msg').addClass("show");
-		$('#msg').removeClass("hide");
-		
-		$('#myModal').modal({
-    				show: 'false'
-					});  
-		$.ajax({
-                url:'includes/db.php',
-				data:{"do":"new_user"},
-				type:'GET',
-                success: function(Response){
-                  //$('#myModal').modal({
-//    				show: 'false'
-//					});  
-                }
-            });
-		}
-    </script>
 <!-- InstanceEndEditable --></div>
 <!-- <hr> -->
 <div class="row">
