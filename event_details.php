@@ -85,7 +85,10 @@ if($_GET){
       <div class="col-lg-6"><h4 class="event_d_title"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_d_title">LOCATION</span></h4><?php echo $mydata[0]['address'];?></div>
     </div>
     <hr>
-    <div class="row"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12512.601545260133!2d142.47393169861775!3d-38.36864235091998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x4c57e84f3ad3794a!2sGRV!5e0!3m2!1sen!2sau!4v1462426863873" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+    <div class="row">
+    
+    <iframe width="100%" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.it/maps?q=<?php echo $mydata[0]['address']; ?>&output=embed"></iframe>
+    </div>
     <hr>
     <div class="row">
       <div class="col-lg-6"><h4 class="event_d_title"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Attending</h4>
