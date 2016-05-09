@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="index.php" server="C:/inetpub/wwwroot/EventsApp/" local="131067202692135247" remote="131067202690000000" Dst="1" />
-<file name="index.php" server="C:/wamp/www/EventsApp/" local="131069880191872047" remote="131069880190000000" Dst="1" />
-<file name="event_details.php" server="C:/wamp/www/EventsApp/" local="131069901718254718" remote="131069901710000000" Dst="1" />
-<file name="index - Copy.php" server="C:/wamp/www/EventsApp/" local="131069664598982186" remote="131069664590000000" Dst="1" />
+<file name="index.php" server="C:/wamp/www/EventsApp/" local="131072510719413385" remote="131072510710000000" Dst="1" />
+<file name="event_details.php" server="C:/wamp/www/EventsApp/" local="131072496394653501" remote="131072496390000000" Dst="1" />
+<file name="index - Copy.php" server="C:/wamp/www/EventsApp/" local="131072496394843520" remote="131072496390000000" Dst="1" />
 <file name=".gitattributes" server="C:/wamp/www/EventsApp/" local="131068152793547018" remote="131068152790000000" Dst="1" />
 <file name=".gitignore" server="C:/wamp/www/EventsApp/" local="131068152794007064" remote="131068152790000000" Dst="1" />
-<file name="newEvent.php" server="C:/wamp/www/EventsApp/" local="131069875769552047" remote="131069875760000000" Dst="1" />
-<file name="login.php" server="C:/wamp/www/EventsApp/" local="131069828535202115" remote="131069828530000000" Dst="1" />
-<file name="edit_events.php" server="C:/wamp/www/EventsApp/" local="131069904608313695" remote="131069904600000000" Dst="1" />
+<file name="newEvent.php" server="C:/wamp/www/EventsApp/" local="131072510727183385" remote="131072510720000000" Dst="1" />
+<file name="login.php" server="C:/wamp/www/EventsApp/" local="131072510723903385" remote="131072510720000000" Dst="1" />
+<file name="edit_events.php" server="C:/wamp/www/EventsApp/" local="131072510734703385" remote="131072510730000000" Dst="1" />
+<file name="myevents.php" server="C:/wamp/www/EventsApp/" local="131072510732043385" remote="131072510730000000" Dst="1" />
 </dwsync>

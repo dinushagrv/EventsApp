@@ -21,6 +21,19 @@
 <!-- InstanceEndEditable -->
 </head>
 <body>
+
+<?php 
+$user_n ="";
+
+if(isset($_SESSION) && $_SESSION['loged']==0){
+	//$user_n = $_SESSION["uname"];
+	header("Location: /EventsApp/login.php");
+	}
+else{
+	
+	}
+
+?>
 <nav class="navbar navbar-default">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +48,18 @@
       
       <ul class="nav navbar-nav navbar-right">
       	<li><a href="newEvent.php">New Event</a></li>
-        <li><a href="#" class="login" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Login</a></li>
+        <li><a href="myEvents.php">My Events</a></li>
+        <?php 
+        if(isset($_SESSION) && $_SESSION['loged']==1){
+        echo '<li><a href="/EventsApp/includes/db.php?do=logout" class="login "><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Logout '. $_SESSION['uname'].'</a></li>';
+        }else if(isset($_SESSION) && $_SESSION['loged']==0){
+        
+        echo '';
+        }
+        
+        ?>
+        
+        
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -43,7 +67,13 @@
   <!-- /.container-fluid --> 
 </nav>
 <div class="container">
-<div class="row"><!-- InstanceBeginEditable name="Content" -->Content<!-- InstanceEndEditable --></div>
+<div class="row"><!-- InstanceBeginEditable name="Content" -->
+<?php 
+
+
+
+?>
+<!-- InstanceEndEditable --></div>
 <!-- <hr> -->
 <div class="row">
     
