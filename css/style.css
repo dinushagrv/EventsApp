@@ -57,9 +57,10 @@ hr {
 	    font-weight: 600;
 		
 	}
-.login{
-
-	}
+.login {
+    float: right;
+    padding: 15px;
+}
 .glyphicon {
     position: relative;
     top: 1px;

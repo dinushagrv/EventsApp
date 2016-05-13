@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="index.php" server="C:/inetpub/wwwroot/EventsApp/" local="131067202692135247" remote="131067202690000000" Dst="1" />
-<file name="index.php" server="C:/wamp/www/EventsApp/" local="131072510719413385" remote="131072510710000000" Dst="1" />
-<file name="event_details.php" server="C:/wamp/www/EventsApp/" local="131072496394653501" remote="131072496390000000" Dst="1" />
-<file name="index - Copy.php" server="C:/wamp/www/EventsApp/" local="131072496394843520" remote="131072496390000000" Dst="1" />
+<file name="index.php" server="C:/wamp/www/EventsApp/" local="131075925563940707" remote="131075925560000000" Dst="1" />
+<file name="event_details.php" server="C:/wamp/www/EventsApp/" local="131075931925954593" remote="131075931920000000" Dst="1" />
+<file name="index - Copy.php" server="C:/wamp/www/EventsApp/" local="131074982004386644" remote="131074982000000000" Dst="1" />
 <file name=".gitattributes" server="C:/wamp/www/EventsApp/" local="131068152793547018" remote="131068152790000000" Dst="1" />
 <file name=".gitignore" server="C:/wamp/www/EventsApp/" local="131068152794007064" remote="131068152790000000" Dst="1" />
-<file name="newEvent.php" server="C:/wamp/www/EventsApp/" local="131072510727183385" remote="131072510720000000" Dst="1" />
-<file name="login.php" server="C:/wamp/www/EventsApp/" local="131072510723903385" remote="131072510720000000" Dst="1" />
-<file name="edit_events.php" server="C:/wamp/www/EventsApp/" local="131072510734703385" remote="131072510730000000" Dst="1" />
-<file name="myevents.php" server="C:/wamp/www/EventsApp/" local="131072510732043385" remote="131072510730000000" Dst="1" />
+<file name="newEvent.php" server="C:/wamp/www/EventsApp/" local="131075925556280268" remote="131075925550000000" Dst="1" />
+<file name="login.php" server="C:/wamp/www/EventsApp/" local="131075925568150947" remote="131075925560000000" Dst="1" />
+<file name="edit_events.php" server="C:/wamp/www/EventsApp/" local="131074982004266680" remote="131074982000000000" Dst="1" />
+<file name="myevents.php" server="C:/wamp/www/EventsApp/" local="131074982003976767" remote="131074982000000000" Dst="1" />
+<file name="EventsApp.ste" server="C:/wamp/www/EventsApp/" local="131074217990827175" remote="131074217990000000" Dst="1" />
 </dwsync>

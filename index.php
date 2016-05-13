@@ -22,18 +22,7 @@
 </head>
 <body>
 
-<?php 
-$user_n ="";
 
-if(isset($_SESSION) && $_SESSION['loged']==0){
-	//$user_n = $_SESSION["uname"];
-	header("Location: /EventsApp/login.php");
-	}
-else{
-	
-	}
-
-?>
 <nav class="navbar navbar-default">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,20 +34,13 @@ else{
       </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
-      
+      <ul class="nav navbar-nav navbar-left">
+      <li><a href="index.php">All Events</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
       	<li><a href="newEvent.php">New Event</a></li>
-        <li><a href="myEvents.php">My Events</a></li>
-        <?php 
-        if(isset($_SESSION) && $_SESSION['loged']==1){
-        echo '<li><a href="/EventsApp/includes/db.php?do=logout" class="login "><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Logout '. $_SESSION['uname'].'</a></li>';
-        }else if(isset($_SESSION) && $_SESSION['loged']==0){
-        
-        echo '';
-        }
-        
-        ?>
-        
+       
+               
         
       </ul>
     </div>
@@ -69,8 +51,29 @@ else{
 <div class="container">
 <div class="row"><!-- InstanceBeginEditable name="Content" -->
 
+ <?php 
+ require_once('includes/db.php');
+ session_start();
+
+if(isset($_SESSION)){
+        if( isset($_SESSION['loged']) &&$_SESSION['loged']==1 && isset($_SESSION['uname'])){ 
+		echo '<a href="/EventsApp/includes/db.php?do=logout" class="login "><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Logout<strong> '.ucfirst(getDisplayName($_SESSION['uname'])[0]).'</strong></a>';
+        }else if(isset($_SESSION['loged']) && $_SESSION['loged']==0){
+        
+        header('location: /EventsApp/login.php');
+        }else{
+			 header('location: /EventsApp/login.php');
+			}
+}else{
+	header("Location: /EventsApp/login.php");
+	}
+        
+        ?>
+        
+        
+<!--<div id="mymsg" class="alert alert-success"></div>-->
 <?php 
-require_once('includes/db.php');
+
 $user_n ="";
 //session_start();
 
@@ -78,7 +81,7 @@ $mydata = getEvents();
 
 if($_GET){
 	$msg=$_GET['message'];
-	echo '<div class="alert alert-success" role="alert">'.$msg .$user_n.'</div>';
+	echo '<div id="mymsg" class="alert alert-success" role="alert">'.$msg .$user_n.'</div>';
 	}
 
 
@@ -90,20 +93,26 @@ foreach($mydata as $data){
       </div>
 	  <div class="col-lg-7 col-xs-12">
 	  <div class="h2">'.$data["name"]
-	  	.'</div><div class="h4">
+	  	.'</div>
+		<div class="h4">
 			<p><span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="event_text">'.$data['time']
 			.'</span><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span><span class="event_text">'.$data['address'];
 	echo '</span></p><p class="event_disc">'.substr($data['discription'],0,120).' ...';
 	
-	echo '</p><a href="event_details.php?eid='.$data['id'].'&&do=ed">Event Details</a> <br><br><div id="msg" class="alert-success hide" ></div></div> </div>';
+	echo '</p> <br><div id="msg" class="alert-success hide" ></div></div> </div>';
 	
 	//if(hasResponded($data["id"], )){
 	echo '
 		
-	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" >Book</button> 
-	<button type="button" class="btn btn-danger btn-lg">Decline</button><br><p> (2) attending </p></div>
+	<div class="col-lg-4 col-xs-12">
+		<a class="btn btn-success btn-lg" href="event_details.php?eid='.$data['id'].'&&do=ed">Event Details </a>
+		<br><br>
+		<p><strong> '.getAttendance( strval($data['id'])).'</strong> attending </p>
+		<p><strong> '.getNotAttending( strval($data['id'])).'</strong> Declined </p><br>
+		<p>'.isBookedMessage($_SESSION['uname'],$data['id']).'</p>
+	</div>
 	
-	
+</div>
 	';
 		
 }
@@ -116,25 +125,27 @@ foreach($mydata as $data){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">EVENT CONFIRMATION</h4>
+        <h4 class="modal-title" id="myModalLabel">EVENT CONFIRMATION </h4>
       </div>
       <div class="modal-body">
         
          <form>
           <div class="form-group">
-            <label for="recipient-name" class="control-label">No of attendies:</label>
-            <select class="form-control">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <label for="recipient-name" class="control-label">No of extra attendies:</label>
+            <select id="extra_a" class="form-control">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
+      
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="book" type="button" class="btn btn-success" onClick="bookEvent()" data-dismiss="modal" >Book</button>
       </div>
@@ -160,17 +171,18 @@ foreach($mydata as $data){
         });
     });
 	
-	function bookEvent(){
+	function bookEvent(e){
 		
-		$('#msg').html("Booking Successful !");
+		
 		$('#msg').addClass("show");
 		$('#msg').removeClass("hide");
-		
+		var no = $('#extra_a').val()
+		var id =$('#myModal').data('id');
 		$('#myModal').modal({
     				show: 'false'
 					});  
 		$.ajax({
-                url:'includes/db.php',
+                url:'includes/db.php?'+id,
 				data:{"do":"new_user"},
 				type:'GET',
                 success: function(Response){
@@ -179,6 +191,12 @@ foreach($mydata as $data){
 //					});  
                 }
             });
+			
+		//$('#myModal').on('show.bs.modal',function(e){
+			var eventID = $this.relatedTarget.data('id');
+		//	});
+			
+		$('#mymsg').html(no+" Booked Successfully for event ID : "+eventID );
 		}
     </script>
 <!-- InstanceEndEditable --></div>

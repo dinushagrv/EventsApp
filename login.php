@@ -22,18 +22,7 @@
 </head>
 <body>
 
-<?php 
-$user_n ="";
 
-if(isset($_SESSION) && $_SESSION['loged']==0){
-	//$user_n = $_SESSION["uname"];
-	header("Location: /EventsApp/login.php");
-	}
-else{
-	
-	}
-
-?>
 <nav class="navbar navbar-default">
   <div class="container"> 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,20 +34,13 @@ else{
       </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar1">
-      
+      <ul class="nav navbar-nav navbar-left">
+      <li><a href="index.php">All Events</a></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
       	<li><a href="newEvent.php">New Event</a></li>
-        <li><a href="myEvents.php">My Events</a></li>
-        <?php 
-        if(isset($_SESSION) && $_SESSION['loged']==1){
-        echo '<li><a href="/EventsApp/includes/db.php?do=logout" class="login "><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Logout '. $_SESSION['uname'].'</a></li>';
-        }else if(isset($_SESSION) && $_SESSION['loged']==0){
-        
-        echo '';
-        }
-        
-        ?>
-        
+       
+               
         
       </ul>
     </div>
@@ -69,8 +51,25 @@ else{
 <div class="container">
 <div class="row"><!-- InstanceBeginEditable name="Content" -->
 
+ <?php 
+ session_start();
+
+if(isset($_SESSION)){
+        if( isset($_SESSION['loged']) &&$_SESSION['loged']==1 && isset($_SESSION['uname'])){ 
+		var_dump($_SESSION['loged']);
+ 		var_dump($_SESSION["uname"]);
+        echo '<a href="/EventsApp/includes/db.php?do=logout" class="login "><span class="glyphicon glyphicon-user " aria-hidden="true"></span>Logout '. $_SESSION['uname'].'</a>';
+        }else if(isset($_SESSION['loged']) && $_SESSION['loged']==0){
+        
+        header('location: ../EventsApp/login.php');
+        }
+}
+        
+        ?>
+
 <!--<div class=" " id="login-modal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" >-->
     	  <!--<div class="modal-dialog">-->
+          <br>  <br>
 				<div class="loginmodal-container">
 					<h1>Login to Your Account</h1><br>
 				  <form action="includes/db.php?do=login" method="post">
@@ -83,6 +82,7 @@ else{
 					<a href="#">Register</a> - <a href="#">Forgot Password</a>
 				  </div>
 				</div>
+                <br>  <br>
 			<!--</div>-->
 	<!--	  </div>-->
 
